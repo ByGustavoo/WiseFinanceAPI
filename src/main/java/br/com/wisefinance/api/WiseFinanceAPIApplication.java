@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WiseFinanceApiApplication {
+public class WiseFinanceAPIApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WiseFinanceApiApplication.class, args);
+	static void main(String[] args) {
+		SpringApplication.run(WiseFinanceAPIApplication.class, args);
 	}
-
 }
