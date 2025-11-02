@@ -1,15 +1,16 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.5.7"
+    id("jacoco")
+    id("org.springframework.boot") version "3.5.7"
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
-group = "br.com.wisefinance.api"
+group = "br.com.wisefinance"
 version = "0.0.1"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(25)
+		languageVersion = JavaLanguageVersion.of(24)
 	}
 }
 
@@ -17,6 +18,15 @@ configurations {
 	compileOnly {
 		extendsFrom(configurations.annotationProcessor.get())
 	}
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = true
+    destinationDirectory.set(file("${projectDir}/dist"))
+}
+
+tasks.named<Jar>("jar") {
+    enabled = false
 }
 
 repositories {
