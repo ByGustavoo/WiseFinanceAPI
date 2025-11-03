@@ -16,10 +16,10 @@
 
 ## 🚀 Ferramentas Utilizadas
 
-* ☕️ Java 25
+* ☕️ Java 24
 
 * 🦫 DBeaver
 
-* 🐘 Postgres 
+* 🐘 Postgres 18
 
 * 🟢 Spring Boot 3.5.7
