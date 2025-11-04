@@ -29,24 +29,37 @@ tasks.named<Jar>("jar") {
     enabled = false
 }
 
+configurations.configureEach {
+    exclude(group = "ch.qos.logback", module = "logback-classic")
+    exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+}
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
 
+    // Flyway and PostgreSQL
     runtimeOnly("org.postgresql:postgresql")
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-database-postgresql")
 
+    // Spring Boot
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    // Logging
+    implementation("org.slf4j:slf4j-api:2.0.17")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+
+    // Lombok
 	compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
 
+    // Tests
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
