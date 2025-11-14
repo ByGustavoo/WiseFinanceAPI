@@ -10,10 +10,9 @@ CREATE TABLE IF NOT EXISTS bandeira (
 
 CREATE TABLE IF NOT EXISTS cartao (
     id SERIAL PRIMARY KEY,
-    id_bandeira INT NOT NULL,
     ultimos_digitos VARCHAR(4) NOT NULL,
     id_situacaocadastro INT NOT NULL,
-    FOREIGN KEY (id_bandeira) REFERENCES bandeira (id),
+    FOREIGN KEY (id_bandeira) REFERENCES bandeira(id),
     FOREIGN KEY (id_situacaocadastro) REFERENCES situacao_cadastro(id)
 );
 
@@ -38,7 +37,7 @@ CREATE TABLE  IF NOT EXISTS tipo_categoria (
     id SERIAL PRIMARY KEY,
     descricao VARCHAR(30) NOT NULL,
     id_situacaocadastro INT NOT NULL DEFAULT 1,
-    FOREIGN KEY (id_situacaocadastro) REFERENCES situacao_cadastro (id)
+    FOREIGN KEY (id_situacaocadastro) REFERENCES situacao_cadastro(id)
 );
 
 CREATE TABLE IF NOT EXISTS movimentacao (
@@ -70,8 +69,7 @@ INSERT INTO tipo_movimentacao (id, descricao) VALUES
 (1, 'ENTRADA');
 
 INSERT INTO tipo_pagamento (descricao) VALUES
-('PIX'),
-('DINHEIRO'),
+('PIX/DINHEIRO'),
 ('CARTAO DE DEBITO'),
 ('VALE ALIMENTACAO'),
 ('CARTAO DE CREDITO');
